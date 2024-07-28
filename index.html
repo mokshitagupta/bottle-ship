@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Ship in a Bottle</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="main.css">
+	</head>
+
+	<body>
+		<!-- <div id="info">
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - GLTFLoader<br />
+			Battle Damaged Sci-fi Helmet by
+			<a href="https://sketchfab.com/theblueturtle_" target="_blank" rel="noopener">theblueturtle_</a><br />
+			<a href="https://hdrihaven.com/hdri/?h=royal_esplanade" target="_blank" rel="noopener">Royal Esplanade</a> from <a href="https://hdrihaven.com/" target="_blank" rel="noopener">HDRI Haven</a>
+		</div> -->
+
+        <div style="overflow-y: hidden;z-index: -1;position: absolute; height: calc(100vh+20px); width: 100vw; top: -20px; left: 0;" id="bottle-bg"> 
+			<h1 class="ss" style="line-height: 100px;color: whitesmoke;font-weight: 500;position: absolute; width: 100vw; text-align: center; font-size: 15vh; margin-top: 75px; z-index: 10;">Ship in a Bottle</h1>
+			<div id="waves-all">
+				<svg class="wave1" xmlns="http://www.w3.org/2000/svg" width="100vw" height="45" viewBox="0 0 100vw 45" fill="none">
+					<path class="wave" style=" stroke-width: 4px;" stroke-dasharray="5,15,15" d="M-18 22.5C-4.57512 13.5698 27.5822 1.06747 48.8122 22.5C70.0423 43.9325 93.4577 31.4302 106.883 22.5C124.471 10.8003 110.754 -3.81589 182.437 22.5C254.119 48.8159 248.312 30.752 261.737 22.5C275.162 14.248 307.319 2.69526 328.549 22.5C349.779 42.3047 384.434 30.752 399.108 22.5C410.451 14.4741 439.445 3.23785 464.671 22.5C489.898 41.7621 517.434 28.0955 532.732 22.5C544.596 17.0175 571.821 9.34205 585.807 22.5C599.794 35.6579 625.978 27.9825 637.322 22.5C658.76 8.53947 699.638 -11.0053 691.646 22.5C683.653 56.0053 738.986 2.28638 757.209 22.5C784.5 52.7727 816.5 22.9205 816.5 22.9205C829 11.9886 861.77 -0.193894 883 21.2386C904.23 42.6712 927.458 31.4302 940.883 22.5C958.471 10.8003 944.754 -3.81589 1016.44 22.5C1088.12 48.8159 1082.31 30.752 1095.74 22.5C1109.16 14.248 1141.32 2.69526 1162.55 22.5C1183.78 42.3047 1218.43 30.752 1233.11 22.5C1244.45 14.4741 1273.45 3.23785 1298.67 22.5C1323.9 41.7621 1351.43 28.0955 1366.73 22.5C1378.6 17.0175 1405.82 9.34205 1419.81 22.5C1433.79 35.6579 1459.98 27.9825 1471.32 22.5C1492.76 8.53946 1533.64 -11.0053 1525.65 22.5C1517.65 56.0053 1566.02 36.4605 1591.21 22.5C1600.08 17.5827 1605.01 9.88464 1614 22.5"/>
+				</svg>
+				<svg class="wave2" xmlns="http://www.w3.org/2000/svg" width="100vw" height="45" viewBox="0 0 100vw 45" fill="none">
+					<path class="wave" style="stroke-width: 4px;" stroke-dasharray="5,15,15" d="M-176 22.5C-162.575 13.5698 -130.418 1.06747 -109.188 22.5C-87.9577 43.9325 -64.5423 31.4302 -51.1174 22.5C-33.5291 10.8003 -47.246 -3.81589 24.4366 22.5C96.1193 48.8159 90.3122 30.752 103.737 22.5C117.162 14.248 149.319 2.69526 170.549 22.5C191.779 42.3047 226.434 30.752 241.108 22.5C252.451 14.4741 281.445 3.23785 306.671 22.5C331.898 41.7621 359.434 28.0955 374.732 22.5C386.596 17.0175 413.821 9.34205 427.807 22.5C441.794 35.658 467.978 27.9825 479.322 22.5C500.76 8.53947 541.638 -11.0053 533.646 22.5C525.653 56.0053 580.986 2.28638 599.209 22.5C626.5 52.7727 658.5 22.9205 658.5 22.9205C671 11.9886 703.77 -0.193893 725 21.2386C746.23 42.6712 769.458 31.4302 782.883 22.5C800.471 10.8003 786.754 -3.81589 858.437 22.5C930.119 48.8159 924.312 30.752 937.737 22.5C951.162 14.248 983.319 2.69526 1004.55 22.5C1025.78 42.3047 1060.43 30.752 1075.11 22.5C1086.45 14.4741 1115.45 3.23785 1140.67 22.5C1165.9 41.7621 1193.43 28.0955 1208.73 22.5C1220.6 17.0175 1247.82 9.34205 1261.81 22.5C1275.79 35.6579 1301.98 27.9825 1313.32 22.5C1334.76 8.53946 1375.64 -11.0053 1367.65 22.5C1359.65 56.0053 1408.02 36.4605 1433.21 22.5C1442.08 17.5827 1447.01 9.88464 1456 22.5" stroke="black" stroke-width="7"/>
+				</svg>
+				<svg class="wave3" xmlns="http://www.w3.org/2000/svg" width="100vw" height="48" viewBox="0 0 100vw 48" fill="none">
+					<path class="wave" style=" stroke-width: 4px;" stroke-dasharray="5,15,15"  d="M-15 23.5C-4.34729 14.5698 21.1697 2.06747 38.0158 23.5C54.862 44.9325 73.4423 32.4302 84.095 23.5C98.0514 11.8003 87.1669 -2.81589 144.047 23.5C200.928 49.8159 196.32 31.752 206.973 23.5C217.625 15.248 243.142 3.69526 259.989 23.5C276.835 43.3047 304.334 31.752 315.977 23.5C324.978 15.4741 347.985 4.23785 368.002 23.5C388.019 42.7621 409.87 29.0955 422.009 23.5C431.423 18.0175 453.026 10.3421 464.124 23.5C475.223 36.658 496 28.9825 505.001 23.5C522.012 9.53947 554.449 -10.0053 548.107 23.5C541.765 57.0053 585.672 3.28638 600.132 23.5C621.788 53.7727 647.18 23.9205 647.18 23.9205C657.099 12.9886 683.102 0.806107 699.948 22.2386C716.794 43.6712 735.225 32.4302 745.878 23.5C759.834 11.8003 748.95 -2.81589 805.831 23.5C862.711 49.8159 858.103 31.752 868.756 23.5C879.409 15.248 904.926 3.69526 921.772 23.5C938.618 43.3047 966.117 31.752 977.76 23.5C986.761 15.4741 1009.77 4.23785 1029.79 23.5C1049.8 42.7621 1071.65 29.0955 1083.79 23.5C1093.21 18.0175 1114.81 10.3421 1125.91 23.5C1137.01 36.6579 1157.78 28.9825 1166.78 23.5C1183.8 9.53946 1216.23 -10.0053 1209.89 23.5C1203.55 57.0053 1232 43 1246 25C1251.27 18.2223 1267.87 9.88465 1275 22.5C1285.46 41 1311.17 1.06747 1328.02 22.5C1344.86 43.9325 1363.44 31.4302 1374.09 22.5C1388.05 10.8003 1377.17 -3.81589 1434.05 22.5C1490.93 48.8159 1486.32 30.752 1496.97 22.5C1507.63 14.248 1533.14 2.69526 1549.99 22.5C1566.83 42.3047 1594.33 30.752 1605.98 22.5C1614.98 14.4741 1637.98 3.23785 1658 22.5C1678.02 41.7621 1699.87 28.0955 1712.01 22.5C1721.42 17.0175 1743.03 9.34205 1754.12 22.5C1765.22 35.658 1786 27.9825 1795 22.5C1812.01 8.53947 1844.45 -11.0053 1838.11 22.5C1831.77 56.0053 1875.67 2.28638 1890.13 22.5C1911.79 52.7727 1937.18 22.9205 1937.18 22.9205C1947.1 11.9886 1973.1 -0.193893 1989.95 21.2386C2006.79 42.6712 2025.23 31.4302 2035.88 22.5C2049.83 10.8003 2038.95 -3.81589 2095.83 22.5C2152.71 48.8159 2148.1 30.752 2158.76 22.5C2169.41 14.248 2194.93 2.69526 2211.77 22.5C2228.62 42.3047 2256.12 30.752 2267.76 22.5C2276.76 14.4741 2299.77 3.23785 2319.79 22.5C2339.8 41.7621 2361.65 28.0955 2373.79 22.5C2383.21 17.0175 2404.81 9.34205 2415.91 22.5C2427.01 35.6579 2447.78 27.9825 2456.78 22.5C2473.8 8.53946 2506.23 -11.0053 2499.89 22.5C2493.55 56.0053 2531.93 36.4605 2551.92 22.5C2558.95 17.5827 2562.87 9.88464 2570 22.5" stroke="black" stroke-width="7"/>
+				</svg>
+			</div>
+			<!-- <svg xmlns="http://www.w3.org/2000/svg" width="100vw" height="45" viewBox="0 0 100vw 45" fill="none">
+				<path style="stroke: white; stroke-width: 2px;" d="M-15 22.5C-4.34729 13.5698 21.1697 1.06747 38.0158 22.5C54.862 43.9325 73.4423 31.4302 84.095 22.5C98.0514 10.8003 87.1669 -3.81589 144.047 22.5C200.928 48.8159 196.32 30.752 206.973 22.5C217.625 14.248 243.142 2.69526 259.989 22.5C276.835 42.3047 304.334 30.752 315.977 22.5C324.978 14.4741 347.985 3.23785 368.002 22.5C388.019 41.7621 409.87 28.0955 422.009 22.5C431.423 17.0175 453.026 9.34205 464.124 22.5C475.223 35.658 496 27.9825 505.001 22.5C522.012 8.53947 554.449 -11.0053 548.107 22.5C541.765 56.0053 585.672 2.28638 600.132 22.5C621.788 52.7727 647.18 22.9205 647.18 22.9205C657.099 11.9886 683.102 -0.193893 699.948 21.2386C716.794 42.6712 735.225 31.4302 745.878 22.5C759.834 10.8003 748.95 -3.81589 805.831 22.5C862.711 48.8159 858.103 30.752 868.756 22.5C879.409 14.248 904.926 2.69526 921.772 22.5C938.618 42.3047 966.117 30.752 977.76 22.5C986.761 14.4741 1009.77 3.23785 1029.79 22.5C1049.8 41.7621 1071.65 28.0955 1083.79 22.5C1093.21 17.0175 1114.81 9.34205 1125.91 22.5C1137.01 35.6579 1157.78 27.9825 1166.78 22.5C1183.8 8.53946 1216.23 -11.0053 1209.89 22.5C1203.55 56.0053 1241.93 36.4605 1261.92 22.5C1268.95 17.5827 1272.87 9.88464 1280 22.5" stroke="black" stroke-width="7"/>
+			</svg> -->
+
+			<!-- <svg  xmlns="http://www.w3.org/2000/svg" width="102vw" height="52" viewBox="0 0 102vw 52" fill="none">
+				<path style="stroke: white; stroke-width: 2px;" d="M3 26C16.4249 15.3803 48.5822 0.512669 69.8122 26C91.0423 51.4873 114.458 36.6197 127.883 26C145.471 12.0868 131.754 -5.29457 203.437 26C275.119 57.2946 269.312 35.8132 282.737 26C296.162 16.1868 328.319 2.44841 349.549 26C370.779 49.5516 405.434 35.8132 420.108 26C431.451 16.4557 460.445 3.09366 485.671 26C510.898 48.9063 538.434 32.6541 553.732 26C565.596 19.4803 592.821 10.3527 606.807 26C620.794 41.6473 646.978 32.5197 658.322 26C679.76 9.39828 720.638 -13.8441 712.646 26C704.653 65.8441 759.986 1.96218 778.209 26C805.5 62 849 17.5 849 17.5M838 26.7794C849.5 12 882.582 0.512667 903.812 26C925.042 51.4873 948.458 36.6197 961.883 26C979.471 12.0868 965.754 -5.29457 1037.44 26C1109.12 57.2946 1103.31 35.8132 1116.74 26C1130.16 16.1868 1162.32 2.44841 1183.55 26C1204.78 49.5516 1239.43 35.8132 1254.11 26C1265.45 16.4557 1294.45 3.09366 1319.67 26C1344.9 48.9063 1372.43 32.6541 1387.73 26C1399.6 19.4803 1426.82 10.3527 1440.81 26C1454.79 41.6473 1480.98 32.5197 1492.32 26C1513.76 9.39828 1554.64 -13.8441 1546.65 26C1538.65 65.8441 1587.02 42.6017 1612.21 26C1621.08 20.1524 1626.01 10.998 1635 26" stroke="black" stroke-width="7"/>
+				</svg> -->
+		</div>
+
+		<script type="importmap">
+			{
+                "imports": {
+                  "three": "https://cdn.jsdelivr.net/npm/three@v0.166.1/build/three.module.js",
+                  "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.166.1/examples/jsm/"
+                }
+            }
+		</script>
+
+		<script type="module">
+
+			import * as THREE from 'three';
+
+			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+
+			let camera, scene, renderer;
+            let t = 0
+            let iw = 1440
+            let gscale = 0.02
+
+			waves()
+
+			init();
+
+			function waves(){
+				// console.log("called")
+				let wave = [document.querySelector(".wave1"), document.querySelector(".wave2"),document.querySelector(".wave3")]
+				let cont = document.getElementById("waves-all")
+				for (let i = 0; i < 21; i++){
+					let c = wave[Math.floor(Math.random() * wave.length)]
+					// console.log(c)
+					cont.appendChild(c.cloneNode(true))
+				}
+
+				document.getElementById("waves-all").style.left = 0
+				document.getElementById("waves-all").style.top = 0
+			}
+
+			function init() {
+
+				const container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 10, window.innerWidth / window.innerHeight, 0.01, 30 );
+				camera.position.set( 25,0,0 );
+                // camera.lookAt(15,0,0)
+
+				scene = new THREE.Scene();
+                const light = new THREE.AmbientLight( 0x404040 ); // soft white light
+                // scene.add( light ); 
+                // const helper = new THREE.CameraHelper( camera );
+                // scene.add( helper );
+
+                // const texture = new THREE.TextureLoader().load( "bg.png" );
+                // scene.background = null
+                // const axesHelper = new THREE.AxesHelper( 5 );
+                // scene.add( axesHelper );
+
+				new RGBELoader()
+					.load( 'mud_road_puresky_1k.hdr', function ( texture1 ) {
+
+						texture1.mapping = THREE.EquirectangularReflectionMapping;
+
+						// scene.background = texture;
+						scene.environment = texture1;
+
+						render();
+
+						// model
+
+						const loader = new GLTFLoader()
+						loader.load( 'bottle.glb', async function ( gltf ) {
+
+							const model = gltf.scene;
+
+							// wait until the model can be added to the scene without blocking due to shader compilation
+
+							await renderer.compileAsync( model, camera, scene );
+
+                            model.traverse( function( node ) {
+                                node.frustumCulled = false;
+
+                                if ( node instanceof THREE.Mesh && (node.name === "eff" || node.name === "water") ) {
+
+                                    // flame = node
+                                    node.material.transparent = true
+                                    console.log(node)
+
+                                    // insert your code here, for example:
+                                    // node.material = new THREE.MeshNormalMaterial()
+
+                                }
+                            })
+
+                            model.position.set(0,-2.2,-0.5)
+                            // let scalef = 1
+                            // model.scale.set(scalef,scalef,scalef)
+                            model.rotateY(Math.PI*2)
+
+							scene.add( model );
+                            let scalef = (window.innerWidth/iw ) + (iw/ window.innerWidth * gscale)
+                            console.log(scalef)
+                            scene.scale.set(scalef, scalef, scalef)
+
+							render();
+			
+						} );
+
+					} );
+
+				renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.toneMapping = THREE.NeutralToneMapping;
+				// renderer.toneMapping = THREE.ReinhardToneMapping;
+				renderer.toneMappingExposure = 1.5;
+                scene.environmentIntensity  = 1;
+                scene.backgroundIntensity   = 0.5;
+				container.appendChild( renderer.domElement );
+
+				const controls = new OrbitControls( camera, renderer.domElement );
+				controls.addEventListener( 'change', render ); // use if there is no animation loop
+				// controls.minDistance = 2;
+				// controls.maxDistance = 2
+                // controls.enableRotate = false;
+                controls.maxAzimuthAngle = Math.PI/2
+                controls.minAzimuthAngle = -Math.PI/4
+                controls.maxPolarAngle = Math.PI/2.4
+                controls.minPolarAngle = Math.PI/4
+				controls.target.set( 0, 0, 0 );
+				controls.update();
+                
+				window.addEventListener( 'resize', onWindowResize );
+                renderer.setAnimationLoop( animate );
+                
+                console.log(window.innerWidth)
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+                
+
+                let scalef =  (window.innerWidth / iw) + (iw/ window.innerWidth * gscale)
+                console.log(scalef)
+                scene.scale.set(scalef, scalef, scalef)
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+
+				render();
+
+			}
+
+			let c = 0
+
+            function animate () {
+                t += 0.01
+                scene.position.y += c * 0.005
+				c = Math.cos(t *10)
+				let s = Math.cos(t * 2)
+
+				// console.log(t, t%0.1)
+
+				// if (t % 1 < 0.1){
+				// }
+
+				let wav  = document.getElementById("waves-all").style
+				wav.left = `${c * 5}px`
+				wav.top = `${c * 2}px`
+				document.documentElement.style.setProperty('--wave', `rgb(${Math.floor(Math.abs(200*s))+10}, ${Math.floor(Math.abs(250*s))+5}, ${Math.floor(Math.abs(55*c))+200})`);
+				// console.log(document.documentElement.style.getPropertyValue('--wave'));
+
+				// console.log(document.getElementById("waves-all").style.left, Math.cos(parseInt(document.getElementById("waves-all").style.left)) * 10)
+                renderer.render( scene, camera );
+            }
+
+			//
+
+			function render() {
+
+				renderer.render( scene, camera );
+
+			}
+
+		</script>
+
+	</body>
+</html>
